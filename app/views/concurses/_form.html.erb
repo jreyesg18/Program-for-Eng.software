@@ -1,0 +1,17 @@
+<%= simple_form_for @concurse do |f| %>
+
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Seleccionar categoria")%>
+
+    <%= f.file_field :concurse_img %>
+    <%= f.input :titulo, label: "titulo concurso" %>
+    <%= f.input :empresa %>
+    <%= f.input :area %>
+    <%= f.input :salario %>
+    <%= f.input :educacion %>
+    <%= f.input :experiencia %>
+    <%= f.input :conocimiento %>
+    <%= f.input :descripcion %>
+    <%= f.file_field :concurse_pdf %>
+
+    <%= f.button :submit %>
+<%end%>

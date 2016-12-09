@@ -8,7 +8,45 @@
 </head>
 <body>
 
-<%= yield %>
+<nav class="navbar navbar-default">
+  <div class="container">
+
+    <div class="navbar-header">
+      <%= link_to "Proyecto Falabella", root_path, class: "navbar-brand" %>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
+        <ul class="dropdown-menu" role= "menu">
+          <% Category.all.each do |category|%>
+              <li class="<%= 'active' if params[:category] == category.name%>">
+                <%= link_to category.name, concurses_path(category: category.name), class: "link" %>
+              </li>
+          <%end%>
+        </ul>
+      </li>
+
+      <% if company_signed_in? %>
+          <li><%= link_to "Agregar concurso", new_concurse_path %></li>
+          <li><%= link_to "Editar Perfil", edit_company_registration_path %></li>
+          <li><%= link_to "Salir", destroy_company_session_path, method: :delete%></li>
+      <%else%>
+          <li><%= link_to "iniciar sesion", new_company_session_path %></li>
+          <li> <%= link_to "Registrar", new_company_registration_path %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

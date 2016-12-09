@@ -1,0 +1,22 @@
+<h1> Editar concurso</h1>
+
+<%= simple_form_for @concurse, :html => {:multipart => true } do |f| %>
+
+    <%= f.select :category_id, @categories %>
+
+    <%= f.file_field :concurse_img %>
+    <%= f.input :titulo, label: "titulo concurso" %>
+    <%= f.input :empresa %>
+    <%= f.input :area %>
+    <%= f.input :salario %>
+    <%= f.input :educacion %>
+    <%= f.input :experiencia %>
+    <%= f.input :conocimiento %>
+    <%= f.input :descripcion %>
+    <%= f.file_field :concurse_pdf %>
+
+
+    <%= f.button :submit %>
+    <%= link_to "Volver", root_path%>
+
+<%end%>

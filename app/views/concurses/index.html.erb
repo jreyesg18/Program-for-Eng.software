@@ -1,0 +1,31 @@
+<% if company_signed_in? %>
+   <h1 class="current-category"><%= params[:category] %></h1>
+
+    <% if @concurses.count == 0 %>
+
+        <h1> no se encuentra concurso</h1>
+
+    <%else%>
+      <div class = "row">
+
+        <% @concurses.each do |concurse| %>
+            <div class = "col-md-3">
+            <a href="/concurses/<%= concurse.id%>">
+                  <%= image_tag concurse.concurse_img.url(:concurse_index), class: "concurse" %>
+            </a>
+            </div>
+        <%end%>
+      </div>
+   <%end%>
+
+<% else %>
+    <div id="video" class="video-container">
+      <!--video iframe-->
+      <div class="video">
+        <iframe frameborder="0" height="281" src="http://player.vimeo.com/video/163694555?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=0" width="640"></iframe>
+      </div>
+    </div>
+
+<%end%>
+
+

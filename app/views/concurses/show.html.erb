@@ -1,0 +1,23 @@
+<%= image_tag @concurse.concurse_img.url(:concurse_show)%>
+
+<h2><%= @concurse.titulo %> </h2>
+<h3><%= @concurse.empresa %></h3>
+<h4><%= @concurse.area %></h4>
+<h4><%= @concurse.salario %></h4>
+<h4><%= @concurse.educacion %></h4>
+<h4><%= @concurse.experiencia %></h4>
+<h4><%= @concurse.conocimiento%></h4>
+<p><%= @concurse.descripcion %></p>
+
+<%= link_to 'Documento', @concurse.concurse_pdf.url, class: "btn btn-custom" %>
+
+<%= link_to "Volver", root_path %>
+
+<% if company_signed_in? %>
+
+  <% if @concurse.company_id == current_company.id %>
+    <%= link_to "editar", edit_concurse_path(@concurse) %>
+    <%= link_to "Eliminar", concurse_path(@concurse), method: :delete, data: { confirm: "¿Estas Seguro?"} %>
+  <%end%>
+
+<%end%>
